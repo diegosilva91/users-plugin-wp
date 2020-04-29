@@ -29,14 +29,15 @@ class UsersPlugin
     // function __construct(string $string)
     function __construct()
     {
-        add_action('init',array($this,'custom_post_type'));
+        add_action('init', array($this,'custom_post_type'));
+        // add_action('init','custom_post_type');
         // echo $string;
     }
 
     function activate()
     {
         // $this->custom_post_type();
-        echo 'The plugin was activated';
+        // echo 'The plugin was activated';
         // flush_rewrite_rules();
     }
 
@@ -52,7 +53,7 @@ class UsersPlugin
 
     function custom_post_type()
     {
-        register_post_type('book',['public'=>'true']);
+        register_post_type( 'book' , ['public' => true, 'label' => 'Books'] );
     }
 
     
@@ -64,7 +65,7 @@ if( class_exists('UsersPlugin')){
 }
 
 //activation
-register_activation_hook(__FILE__,array($usersPlugin, 'activate'));
+register_activation_hook( __FILE__ ,array($usersPlugin, 'activate') );
 
 //deactivation
-// register_deactivation_hook(__FILE__,array($usersPlugin, 'deactivate'));
+register_deactivation_hook( __FILE__ ,array($usersPlugin, 'deactivate') );
