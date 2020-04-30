@@ -36,15 +36,15 @@ class UsersPlugin
 
     function activate()
     {
-        // $this->custom_post_type();
+        $this->custom_post_type();
         // echo 'The plugin was activated';
-        // flush_rewrite_rules();
+        flush_rewrite_rules();
     }
 
     function deactivate()
     {
         // echo 'The plugin was deactivated';
-        // flush_rewrite_rules();
+        flush_rewrite_rules();
     }
     function uninstall()
     {
@@ -69,3 +69,6 @@ register_activation_hook( __FILE__ ,array($usersPlugin, 'activate') );
 
 //deactivation
 register_deactivation_hook( __FILE__ ,array($usersPlugin, 'deactivate') );
+
+//unistall
+register_uninstall_hook( __FILE__ , array($usersPlugin, 'uninstall') );
